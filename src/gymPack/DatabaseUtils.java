@@ -28,4 +28,33 @@ public class DatabaseUtils {
             e.printStackTrace();
         }
     }
+    
+    public static String getCurrentBMI() {
+    	
+    		String getBMIQuery = "SELECT BMI\r\n"
+    				+ "FROM dbo.bmi\r\n"
+    				+ "order by ID DESC\r\n"
+    				+ "limit 1;";
+    		
+    		String currentBMI = null;
+    	
+			try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbo?characterEncoding=latin1&useConfigs=maxPerformance", "root", "asdf1234");
+				Statement stmt = con.createStatement();
+	    		ResultSet rs = stmt.executeQuery(getBMIQuery)) {
+	    		
+	    		if (rs.next()) {
+	    			
+	    			currentBMI = rs.getString(1);
+	    			
+	    		}
+			}
+	    		
+			 catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    		
+    		return currentBMI;
+    		
+    }
 }

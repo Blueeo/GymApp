@@ -21,11 +21,14 @@ public class MainWindow extends JFrame implements ActionListener {
         tfWeight.setBounds(300, 200, 200, 25);
         tfHeight = new JTextField();
         tfHeight.setBounds(300, 300, 200, 25);
-
+        
         JLabel lW = new JLabel("Weight");
         lW.setBounds(250, 200, 50, 25);
         JLabel lH = new JLabel("Height");
         lH.setBounds(250, 300, 50, 25);
+        JLabel bmi = new JLabel("Current BMI: " + DatabaseUtils.getCurrentBMI());
+		bmi.setBounds(325, 160, 300, 25);
+
 
         closeButton = new JButton("Close");
         closeButton.addActionListener(this);
@@ -41,6 +44,8 @@ public class MainWindow extends JFrame implements ActionListener {
         add(tfHeight);
         add(lW);
         add(lH);
+        add(bmi);
+        
     }
 
     @Override
