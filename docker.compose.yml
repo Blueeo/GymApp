@@ -1,0 +1,21 @@
+name: blueeo
+
+services:
+  jenkins:
+    image: jenkins/jenkins:lts-jdk17
+    privileged: true
+    user: root
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    container_name: jenkins
+  gitlab:
+    image: gitlab/gitlab-ce:latest
+    container_name: gitlab
+    restart: always
+    hostname: 'localhost'
+    ports:
+      - "80:80"
+      - "443:443"
+      - "22:22"
+    shm_size: '256m'
